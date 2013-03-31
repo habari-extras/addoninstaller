@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pluggable type="plugin">
+  <name>AddonInstaller</name>
+  <license url="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Software License 2.0</license>
+  <url>http://habariproject.org/</url>
+  <author url="http://habariproject.org/">The Habari Community</author>
+  <version>0.1</version>
+  <description><![CDATA[The Addon Installer lets you install plugins you chose from the addon catalog.]]></description>
+  <copyright>2013</copyright>
+  <guid>59e173b4-ab08-4b37-96f1-5c79be90e3e5</guid>
+</pluggable>
+ 
