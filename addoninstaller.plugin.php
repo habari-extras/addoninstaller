@@ -21,9 +21,10 @@ class AddonInstaller extends Plugin
 		}
 		else {
 			// Start processing the addons we were passed
-			$data = Session::get_set('install_addons')[0];
+			$payload = Session::get_set('install_addons', false);
+			$data = $payload[0];
 			foreach($data as $addon) {
-				Session::notice("You have " . $addon->name . " waiting for install");
+				Session::notice(_t("You have %s v%s waiting for install", array($addon->name, $addon->version), __CLASS__));
 			}
 		}
 		Utils::redirect(Site::get_url("admin"));
