@@ -94,9 +94,18 @@ class AddonInstaller extends Plugin
 	 */
 	public function action_admin_theme_get_addon_preview($handler, $theme)
 	{
+		// Notify about problems with the tempdir
 		$tmpdir = $this->tempdir();
 		if(!$tmpdir) {
 			Session::error(_t("You have no writable temporary directory. Your webserver needs to have write access to either your server's tempdir or Habari's user directory."));
+		}
+		
+		// Check if we need to do something before displaying the list
+		$action = (isset($handler->handler_vars["action"])) ? $handler->handler_vars["action"] : "";
+		switch($action)
+		{
+			case "install":
+				break;
 		}
 		
 		// Pass the addon list to the theme
@@ -104,6 +113,12 @@ class AddonInstaller extends Plugin
 		$data = $payload[0];
 		$addons = array();
 		foreach($data as $addon) {
+			// Insert other checks here
+			$addon->habari_compatible = (version_compare(Version::get_habariversion(), $addon->habari_version) == -1) ? false : true;
+			if($addon->habari_compatible) {
+				$actions = array("install" => URL::get( 'admin', array("page" => "addon_preview", "action" => "install", "addon" => "")));
+				$addon->actions = $actions;
+			}
 			$addons[$addon->type][] = $addon;
 		}
 		
