@@ -48,23 +48,10 @@ class AddonInstaller extends Plugin
 			Utils::redirect(Site::get_url('login'));
 		}
 		else {
-			// Tell the user we have a party to start
-			$payload = Session::get_set('install_addons', false);
-			if(isset($payload)) {
-				Session::notice(_t("You have new addons to install.", __CLASS__));
-			}
+			$this->notice_installation();
 		}
+
 		Utils::redirect(Site::get_url("admin"));
-	}
-	
-	public function filter_login_redirect_dest($login_dest, $user, $login_session)
-	{
-		$data = Session::get_set('install_addons', false);
-		if(isset($data) && !empty($data)) {
-			// Only redirect when we caused it
-			$login_dest = Site::get_url('habari') . '/install_addons';
-		}
-		return $login_dest;
 	}
 	
 	/**
@@ -103,6 +90,16 @@ class AddonInstaller extends Plugin
 				break;			
 		}
 		return $require_any;
+	}
+	
+	/**
+	 * Show notification about new addons on dashboard
+	 */
+	public function action_admin_theme_get_dashboard($handler, $theme)
+	{
+		if(isset($_SESSION['install_addons'])) {
+			$this->notice_installation();
+		}
 	}
 	
 	/**
@@ -218,6 +215,14 @@ class AddonInstaller extends Plugin
 			}
 			$Session::add_to_set("install_addons", $entry, $index);
 		}
+	}
+	
+	/**
+	 * Helper function to avoid multiple places where one translated string is used
+	 */
+	function notice_installation()
+	{
+		Session::notice(_t("You have addons ready for installation.", __CLASS__) . " <a href='" . URL::get( 'admin', array("page" => "addon_preview")) . "'>" . _t("Go to list", __CLASS__) . "</a>", 'addons_installnotice');
 	}
 }
 ?>
