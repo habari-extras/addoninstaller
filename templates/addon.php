@@ -1,5 +1,3 @@
-<?php namespace Habari;
-// This template could propably be replaced by the admin's plugin template if we modify both installer and admin template slightly. ?>
 <div class="item plugin clear">
 	<div class="head">
 		<a href="<?php echo $addon->download_url; ?>" class="addon"><?php echo $addon->name; ?> <span class="version"><?php echo $addon->version; ?></span></a>

@@ -1,6 +1,4 @@
 <?php
-namespace Habari;
-
 class AddonInstaller extends Plugin
 {
 	/** @var array $_types Default addon types */
@@ -134,7 +132,7 @@ class AddonInstaller extends Plugin
 				file_put_contents($tmpdir . "/download.zip", $request->get_response_body());
 				
 				// Extract it to the real directory
-				$zip = new \ZipArchive();
+				$zip = new ZipArchive();
 				$zipstatus = $zip->open($tmpdir . "/download.zip");
 				if($zipstatus === true) {
 					$addonpath = Site::get_dir("user") . '/' . $this->_type_subdirs[$data[$addon]->type] . '/' . $data[$addon]->name;
@@ -153,7 +151,7 @@ class AddonInstaller extends Plugin
 				}
 				else {
 					switch($zipstatus) {
-						case \ZipArchive::ER_NOZIP:
+						case ZipArchive::ER_NOZIP:
 							Session::error(_t("There was a problem retrieving the zip file"));
 							break;
 						default:
