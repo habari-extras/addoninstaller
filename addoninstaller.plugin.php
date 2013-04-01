@@ -17,7 +17,10 @@ class AddonInstaller extends Plugin
 		'plugin' => 'plugins',
 		'locale' => 'locale',
 	);
-
+	
+	/**
+	 * Plugin initialization. Add our templates and rules so they can be used.
+	 */
 	public function action_init()
 	{
 		$this->add_template( 'addon_preview', dirname(__FILE__) . '/templates/addon_preview.php' );
@@ -27,6 +30,10 @@ class AddonInstaller extends Plugin
 		$this->add_rule('"install_addons"', 'install_addons');
 	}
 	
+	/**
+	 * Grab calls to yoursite.tld/install_addons
+	 * This is where the catalog redirects to
+	 */
 	public function theme_route_install_addons($theme, $params)
 	{
 		if(isset($_POST['payload']) && !empty($_POST['payload'])) {
