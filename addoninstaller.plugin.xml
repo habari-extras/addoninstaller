@@ -5,7 +5,12 @@
   <url>http://habariproject.org/</url>
   <author url="http://habariproject.org/">The Habari Community</author>
   <version>0.1</version>
-  <description><![CDATA[The Addon Installer lets you install plugins you chose from the addon catalog.]]></description>
+  <description><![CDATA[This basic version of the Addon Installer lets you install plugins and themes you chose from the addon catalog.]]></description>
+  <help><value><![CDATA[
+    Go to the addon catalog. Put plugins and / or themes in your cart. Enter the URL of your site in the cart and proceed. You will be redirected to your site, where you have to login. An admin page is available where you can install your selected addons.
+	
+	Your user directory needs to be writable for your webserver. You will need permissions to manage plugins or themes.
+  ]]></value></help>
   <copyright>2013</copyright>
   <guid>59e173b4-ab08-4b37-96f1-5c79be90e3e5</guid>
 </pluggable>
