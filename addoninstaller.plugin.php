@@ -1,4 +1,6 @@
 <?php
+namespace Habari;
+
 class AddonInstaller extends Plugin
 {
 	public function action_init()
