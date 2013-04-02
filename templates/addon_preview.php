@@ -1,7 +1,6 @@
 <?php namespace Habari; ?>
 <?php if ( !defined( 'HABARI_PATH' ) ) { die('No direct access'); } ?>
-<?php $theme->display('header'); ?>
-
+<a id="for_installation"></a>
 <?php foreach($addon_types as $type => $type_display): ?>
 	<?php if(isset($addons[$type]) && count($addons[$type])): ?>
 		<div class="container plugins" id="available_<?= $type ?>_list">
@@ -18,4 +17,3 @@
 		</div>
 	<?php endif; ?>
 <?php endforeach; ?>
-<?php $theme->display('footer'); ?>
