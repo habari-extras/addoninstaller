@@ -52,11 +52,12 @@ class AddonInstaller extends Plugin
 		$data = Session::get_set('install_addons', false);
 
 		// Check if we need to do something before displaying the list
-		$action = Controller::get_var('action', '');
+		$action = $_GET['action'];
+
 		switch($action)
 		{
 			case "install":
-				$addon = Controller::get_var('addon', '');
+				$addon = $_GET['addon'];
 				if(!array_key_exists($addon, $data)) {
 					// What did you pass us there?
 					Session::error("There was a problem handling the addon identifier. Maybe you used a wrong link?");
