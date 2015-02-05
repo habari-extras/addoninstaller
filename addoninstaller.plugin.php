@@ -38,7 +38,9 @@ class AddonInstaller extends Plugin
 		}
 	}
 
-
+	/**
+	 * Display installable addons in the plugin list
+	 */
 	public function filter_plugin_loader($existing_loader, Theme $theme)
 	{
 		// Notify about problems with the tempdir
