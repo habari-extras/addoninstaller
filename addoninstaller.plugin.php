@@ -138,7 +138,7 @@ class AddonInstaller extends Plugin
 			$this->notice_installation();
 		}
 
-		Utils::redirect(URL::get('admin', array('page' => 'plugin')) . '#for_installation');
+		Utils::redirect(URL::get('admin', array('page' => 'plugins')) . '#for_installation');
 	}
 
 	/**
